@@ -1,0 +1,42 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <!-- 在 net9 宿主（Flow Launcher 2.1.4）同款运行时下加载插件，验证真实兼容性 -->
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net9.0-windows</TargetFramework>
+    <UseWPF>true</UseWPF>
+    <LangVersion>12</LangVersion>
+    <Nullable>disable</Nullable>
+    <AssemblyName>HostLoadTest</AssemblyName>
+    <RootNamespace>SmokeTest</RootNamespace>
+    <EnableDefaultCompileItems>false</EnableDefaultCompileItems>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Include="..\SmokeTest\Program.cs" />
+    <Compile Include="..\SmokeTest\RecordingProxy.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="Flow.Launcher.Plugin">
+      <HintPath>$(LocalAppData)\FlowLauncher\app-2.1.4\Flow.Launcher.Plugin.dll</HintPath>
+      <Private>true</Private>
+    </Reference>
+    <Reference Include="Flow.Launcher.Plugin.DeepSeek">
+      <HintPath>..\..\Flow.Launcher.Plugin.DeepSeek\bin\Release\Flow.Launcher.Plugin.DeepSeek.dll</HintPath>
+      <Private>true</Private>
+    </Reference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\..\Flow.Launcher.Plugin.DeepSeek\bin\Release\PropertyChanged.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <Visible>false</Visible>
+    </None>
+    <None Include="..\..\Flow.Launcher.Plugin.DeepSeek\bin\Release\JetBrains.Annotations.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <Visible>false</Visible>
+    </None>
+  </ItemGroup>
+
+</Project>

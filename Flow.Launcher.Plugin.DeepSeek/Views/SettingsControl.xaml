@@ -1,0 +1,32 @@
+<UserControl x:Class="Flow.Launcher.Plugin.DeepSeek.Views.SettingsControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             mc:Ignorable="d"
+             d:DesignHeight="260" d:DesignWidth="400">
+    <StackPanel Margin="20,15,20,15">
+        <CheckBox Margin="0,0,0,10"
+                  Content="{DynamicResource plugin_deepseek_setting_autosend}"
+                  IsChecked="{Binding Settings.AutoSend}" />
+        <CheckBox Margin="0,0,0,10"
+                  Content="{DynamicResource plugin_deepseek_setting_deepthink}"
+                  IsChecked="{Binding Settings.DeepThink}" />
+        <CheckBox Margin="0,0,0,10"
+                  Content="{DynamicResource plugin_deepseek_setting_search}"
+                  IsChecked="{Binding Settings.WebSearch}" />
+        <CheckBox Margin="0,0,0,14"
+                  Content="{DynamicResource plugin_deepseek_setting_show_copy}"
+                  IsChecked="{Binding Settings.ShowCopyResult}" />
+
+        <TextBlock Margin="0,0,0,5"
+                   Text="{DynamicResource plugin_deepseek_setting_prefix}" />
+        <TextBox Padding="5,4,5,4"
+                 Text="{Binding Settings.PromptPrefix, UpdateSourceTrigger=PropertyChanged}" />
+        <TextBlock Margin="0,4,0,0"
+                   Opacity="0.6"
+                   FontSize="11"
+                   TextWrapping="Wrap"
+                   Text="{DynamicResource plugin_deepseek_setting_prefix_hint}" />
+    </StackPanel>
+</UserControl>
