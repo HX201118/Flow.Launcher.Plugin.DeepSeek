@@ -89,12 +89,18 @@ Flow.Launcher.Plugin.DeepSeek-main/
 官方不接受"上传"，流程是给清单仓库提 PR，步骤：
 
 1. 在 GitHub 建公开仓库 `Flow.Launcher.Plugin.DeepSeek`（**不要勾选初始化**）
-2. 双击运行 `publish.ps1`：推送代码 + 打 tag `v1.0.0`
+2. 双击运行 `publish.ps1`：推送代码 + 打 tag
 3. Actions（`.github/workflows/release.yml`）自动编译并产出 Release 资产 `Flow.Launcher.Plugin.DeepSeek.zip`
 4. Fork [Flow-Launcher/Flow.Launcher.PluginsManifest](https://github.com/Flow-Launcher/Flow.Launcher.PluginsManifest)，把 `submission\DeepSeek-8B4E2A7C1D3F4A6B9E5C0D8F2A1B7C3D.json` 放进 fork 的 `plugins/` 目录
 5. 提 PR 到 `main` 分支，等官方团队审核合并
 
-PR 合并后还要等 CDN 同步（几天到一周）才会在商店出现；在那之前可以用 `pm install <zip 直链>` 手动安装。
+v1.0.0 的提交记录：源码仓库 [HX201118/Flow.Launcher.Plugin.DeepSeek](https://github.com/HX201118/Flow.Launcher.Plugin.DeepSeek)，清单 PR [#796](https://github.com/Flow-Launcher/Flow.Launcher.PluginsManifest/pull/796)。
+
+PR 合并后还要等 CDN 同步（几天到一周）才会在商店出现；在那之前可以在 Flow 里直接执行：
+
+```
+pm install https://github.com/HX201118/Flow.Launcher.Plugin.DeepSeek/releases/download/v1.0.0/Flow.Launcher.Plugin.DeepSeek.zip
+```
 
 之后每次发新版本只要打个新 tag 推送，`PluginsManifest` 的 CI 每 3 小时会自动把版本刷到最新，**不用再提 PR**。
 
