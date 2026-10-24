@@ -26,9 +26,24 @@ jobs:
     - name: Publish
       run: dotnet publish Flow.Launcher.Plugin.DeepSeek/Flow.Launcher.Plugin.DeepSeek.csproj -c Release -r win-x64 --no-self-contained
 
+    # 注意：必须用 "<dir>\*" 而不是 "<dir>"，否则 zip 里会多一层 publish/，
+    # Flow Launcher 解压后找不到根目录的 plugin.json。
     - name: Package
       shell: pwsh
-      run: Compress-Archive -LiteralPath "Flow.Launcher.Plugin.DeepSeek/bin/Release/win-x64/publish" -DestinationPath "Flow.Launcher.Plugin.DeepSeek.zip" -Force
+      run: |
+        $src = "Flow.Launcher.Plugin.DeepSeek/bin/Release/win-x64/publish"
+        if (-not (Test-Path (Join-Path $src "plugin.json"))) {
+          throw "publish 输出缺少 plugin.json，终止打包"
+        }
+        Compress-Archive -Path (Join-Path $src "*") -DestinationPath "Flow.Launcher.Plugin.DeepSeek.zip" -Force
+
+    - name: Verify package layout
+      shell: pwsh
+      run: |
+        Add-Type -AssemblyName System.IO.Compression.FileSystem
+        $zip = [System.IO.Compression.ZipFile]::OpenRead("$PWD/Flow.Launcher.Plugin.DeepSeek.zip")
+        $zip.Entries | ForEach-Object { Write-Output $_.FullName }
+        $zip.Dispose()
 
     - name: Upload build artifact
       uses: actions/upload-artifact@v4
