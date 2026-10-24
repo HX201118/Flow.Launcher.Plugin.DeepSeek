@@ -1,4 +1,4 @@
-# 把 dist\DeepSeek-1.0.0 安装到 Flow Launcher 并重启它
+﻿# 把 dist\DeepSeek-1.0.0 安装到 Flow Launcher 并重启它
 # 用法：右键"使用 PowerShell 运行"
 
 $ErrorActionPreference = "Stop"

@@ -1,4 +1,4 @@
-# 推送到 GitHub 并打 tag 触发自动构建发布
+﻿# 推送到 GitHub 并打 tag 触发自动构建发布
 # 前置：先在 https://github.com/new 建好名为 Flow.Launcher.Plugin.DeepSeek 的 Public 仓库（不要勾选初始化）
 # 用法：右键"使用 PowerShell 运行"
 

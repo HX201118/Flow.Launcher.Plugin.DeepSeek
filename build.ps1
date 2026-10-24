@@ -1,4 +1,4 @@
-# 一键构建 + 打包
+﻿# 一键构建 + 打包
 # 用法：右键"使用 PowerShell 运行"，或在命令行执行 .\build.ps1
 
 $ErrorActionPreference = "Stop"
